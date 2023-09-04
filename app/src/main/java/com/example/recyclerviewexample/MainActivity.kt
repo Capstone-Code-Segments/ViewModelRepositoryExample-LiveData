@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         // Alur untuk variabel "onClickToDetailActivity"
         adapterClass.onClickToDetailActivity = { name, description ->
-            // Contoh saja, Toast ini untuk menampilkan nama pahlawan
+            // Contoh saja, Toast ini betrtujuan untuk menampilkan nama pahlawan
             Toast.makeText(this@MainActivity, "Name: " + name, Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
