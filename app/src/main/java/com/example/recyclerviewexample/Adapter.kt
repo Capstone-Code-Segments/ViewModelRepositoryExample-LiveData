@@ -28,7 +28,7 @@ class Adapter(private val heroList: ArrayList<Hero>) :
         )
     }
 
-    // Untuk item tertentu
+    // Untuk tiap item yang terdapat di dalam "heroList"
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val name = heroList[position].name
         val description = heroList[position].description
