@@ -33,11 +33,12 @@ class CatActivity : AppCompatActivity() {
             if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {
-                        //binding?.progressBar?.visibility = View.VISIBLE
+                        // Menampilkan simbol loading
                     }
 
                     is ResultState.Success -> {
-                        //binding?.progressBar?.visibility = View.GONE
+                        // Menghilangkan simbol loading dan menampilkan hasil (di sini langsung menampilkan hasil)
+
                         val catListResponse = result.data
 
                         val catList = catListResponse.map { item ->
@@ -53,12 +54,7 @@ class CatActivity : AppCompatActivity() {
                     }
 
                     is ResultState.Error -> {
-//                        binding?.progressBar?.visibility = View.GONE
-//                        Toast.makeText(
-//                            context,
-//                            "Terjadi kesalahan" + result.error,
-//                            Toast.LENGTH_SHORT
-//                        ).show()
+                        // Menghilangkan simbol loading dan menampilkan pesan eror
                     }
                 }
             }
