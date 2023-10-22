@@ -1,4 +1,4 @@
-package com.example.recyclerviewexample
+package com.example.viewmodelrepositoryexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

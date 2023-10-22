@@ -1,4 +1,4 @@
-package com.example.recyclerviewexample
+package com.example.viewmodelrepositoryexample
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

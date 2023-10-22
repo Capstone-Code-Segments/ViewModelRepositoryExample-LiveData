@@ -1,4 +1,4 @@
-package com.example.recyclerviewexample
+package com.example.viewmodelrepositoryexample
 
 import org.junit.Test
 
