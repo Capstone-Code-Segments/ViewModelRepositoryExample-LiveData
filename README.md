@@ -1,4 +1,4 @@
-# BreadcrumbsViewModelRepositoryExample-LiveData
+# ViewModelRepositoryExample-LiveData
 ***Anda dapat menggunakan segmen program pada project ini sebagai sumber/referensi. Anda dapat melakukan eksplorasi juga.***
 
 Project ini bertujuan untuk menampilkan contoh penggunaan ViewModel, Repository, dan Retrofit. API yang digunakan dalam project ini ialah https://api.thecatapi.com/v1/. Kalian dapat melakukan signup untuk mendapatkan token melalui link berikut: https://thecatapi.com/signup (versi gratis).
