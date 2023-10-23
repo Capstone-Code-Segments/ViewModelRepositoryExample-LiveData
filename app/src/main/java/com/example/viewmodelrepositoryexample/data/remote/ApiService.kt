@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface ApiService {
     /**
-     * Mengambil 20 gambar kucing secara random
+     * Fungsi ini akan mengambil 20 gambar kucing secara random (dalam bentuk list)
      *
      * Perintah dari backend: GET
      *
