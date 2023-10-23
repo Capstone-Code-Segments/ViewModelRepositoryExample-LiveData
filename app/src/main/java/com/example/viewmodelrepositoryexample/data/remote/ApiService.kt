@@ -6,8 +6,11 @@ import retrofit2.http.Query
 
 interface ApiService {
     /**
-     * Mengambil 20 random gambar kucing
-     * Data dari backend: GET, pakai query (key: limit, value dalam integer (1-100))
+     * Mengambil 20 gambar kucing secara random
+     *
+     * Perintah dari backend: GET
+     *
+     * Parameter: query (key: limit, value dalam integer (1-100))
      */
     @GET("images/search")
     suspend fun getRandomCatList(@Query("limit") limit: Int = 20): List<CatItemResponse>
