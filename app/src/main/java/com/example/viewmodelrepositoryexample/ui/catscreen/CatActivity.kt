@@ -9,10 +9,14 @@ import com.example.viewmodelrepositoryexample.data.ResultState
 import com.example.viewmodelrepositoryexample.databinding.ActivityCatBinding
 import com.example.viewmodelrepositoryexample.dataclass.CatDataClass
 import com.example.viewmodelrepositoryexample.ui.ViewModelFactory
+import com.example.viewmodelrepositoryexample.ui.favoritecatscreen.FavoriteCatViewModel
 
 class CatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCatBinding
     private val catViewModel by viewModels<CatViewModel> {
+        ViewModelFactory(this)
+    }
+    private val favoriteCatViewModel by viewModels<FavoriteCatViewModel> {
         ViewModelFactory(this)
     }
 
@@ -22,8 +26,28 @@ class CatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val catAdapter = CatAdapter()
+        catAdapter.onClickInsertOrDeleteFavoriteCat = { cat ->
+            if (cat.isFavorite) {
+                // Akan menghapus dari daftar favorite apabila item cat, yang telah masuk ke dalam daftar favorite, diklik tombol favorite-nya
+                favoriteCatViewModel.deleteFavoriteCat(cat)
+                cat.isFavorite = false
+            } else {
+                // Akan memasukkan ke dalam daftar favorite apabila item cat, yang belum masuk ke dalam daftar favorite, diklik tombol favorite-nya
+                favoriteCatViewModel.insertFavoriteCat(
+                    CatDataClass(
+                        cat.id,
+                        cat.url,
+                        cat.width,
+                        cat.height,
+                        true
+                    )
+                )
 
-        binding?.rvListCat?.apply {
+                cat.isFavorite = true
+            }
+        }
+
+        binding.rvListCat.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = catAdapter
@@ -41,16 +65,7 @@ class CatActivity : AppCompatActivity() {
 
                         val catListResponse = result.data
 
-                        val catList = catListResponse.map { item ->
-                            CatDataClass(
-                                item.id,
-                                item.url,
-                                item.width,
-                                item.height,
-                            )
-                        }
-
-                        catAdapter.submitList(catList)
+                        catAdapter.submitList(catListResponse)
                     }
 
                     is ResultState.Error -> {

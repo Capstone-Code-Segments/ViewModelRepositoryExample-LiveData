@@ -2,14 +2,17 @@ package com.example.viewmodelrepositoryexample.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.viewmodelrepositoryexample.R
 import com.example.viewmodelrepositoryexample.databinding.ItemCatBinding
 import com.example.viewmodelrepositoryexample.dataclass.CatDataClass
 
 class CatAdapter : ListAdapter<CatDataClass, CatAdapter.CatViewHolder>(DIFF_CALLBACK) {
+    lateinit var onClickInsertOrDeleteFavoriteCat: (CatDataClass) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val binding = ItemCatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,12 +26,28 @@ class CatAdapter : ListAdapter<CatDataClass, CatAdapter.CatViewHolder>(DIFF_CALL
         }
     }
 
-    class CatViewHolder(private val binding: ItemCatBinding) :
+    inner class CatViewHolder(private val binding: ItemCatBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: CatDataClass) {
+        fun bind(catDataClass: CatDataClass) {
             Glide.with(itemView.context)
-                .load(data.url)
+                .load(catDataClass.url)
                 .into(binding.ivItemCat)
+
+            if (catDataClass.isFavorite) {
+                binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_filled))
+            } else {
+                binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_outlined))
+            }
+
+            binding.ivFavorite.setOnClickListener {
+                onClickInsertOrDeleteFavoriteCat(catDataClass)
+
+                if (catDataClass.isFavorite) {
+                    binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_filled))
+                } else {
+                    binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_outlined))
+                }
+            }
         }
     }
 
