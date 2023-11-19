@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val intent = Intent(this@MainActivity, CatActivity::class.java)
-
         startActivity(intent)
 
         finish()

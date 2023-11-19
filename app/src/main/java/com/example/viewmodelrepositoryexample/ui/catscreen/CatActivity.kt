@@ -1,6 +1,8 @@
 package com.example.viewmodelrepositoryexample.ui.catscreen
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,7 +11,9 @@ import com.example.viewmodelrepositoryexample.data.ResultState
 import com.example.viewmodelrepositoryexample.databinding.ActivityCatBinding
 import com.example.viewmodelrepositoryexample.dataclass.CatDataClass
 import com.example.viewmodelrepositoryexample.ui.ViewModelFactory
+import com.example.viewmodelrepositoryexample.ui.favoritecatscreen.FavoriteCatActivity
 import com.example.viewmodelrepositoryexample.ui.favoritecatscreen.FavoriteCatViewModel
+
 
 class CatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCatBinding
@@ -74,5 +78,13 @@ class CatActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.ivFavorite.setOnClickListener(
+            View.OnClickListener
+            // incrementing the value of textView
+            {
+                val intent = Intent(this@CatActivity, FavoriteCatActivity::class.java)
+                startActivity(intent)
+            })
     }
 }

@@ -34,18 +34,18 @@ class CatAdapter : ListAdapter<CatDataClass, CatAdapter.CatViewHolder>(DIFF_CALL
                 .into(binding.ivItemCat)
 
             if (catDataClass.isFavorite) {
-                binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_filled))
+                binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_red_heart_filled))
             } else {
-                binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_outlined))
+                binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_red_heart_outlined))
             }
 
             binding.ivFavorite.setOnClickListener {
                 onClickInsertOrDeleteFavoriteCat(catDataClass)
 
                 if (catDataClass.isFavorite) {
-                    binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_filled))
+                    binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_red_heart_filled))
                 } else {
-                    binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_heart_outlined))
+                    binding.ivFavorite.setImageDrawable(ContextCompat.getDrawable(binding.ivFavorite.context, R.drawable.ic_red_heart_outlined))
                 }
             }
         }
