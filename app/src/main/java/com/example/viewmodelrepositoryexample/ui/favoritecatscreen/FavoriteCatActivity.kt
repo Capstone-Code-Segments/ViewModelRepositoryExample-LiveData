@@ -1,8 +1,6 @@
 package com.example.viewmodelrepositoryexample.ui.favoritecatscreen
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
